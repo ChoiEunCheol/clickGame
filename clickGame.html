@@ -12,10 +12,15 @@
         display: flex;
     }
 
-    #left {
+    #main {
         width: 800px;
         height: 800px;
-        background-color: violet;
+        
+        margin-top: 60px;
+        margin-left:    60px;
+        
+        border: 1px solid #000;
+        background: #F9F9F9;
     }
 
     #right {
@@ -23,14 +28,14 @@
         height: 100vh;
         background-color: yellow;
     }
-    
+
     #score {
         width: 300px;
         height: 100px;
         background-color: white;
     }
 
-    #playBtn{
+    #playBtn {
         width: 300px;
         height: 300px;
 
@@ -38,7 +43,7 @@
         background: #F66;
     }
 
-    #main > button {
+    #main>button {
         width: 30px;
         height: 30px;
         border-radius: 15px;
@@ -47,7 +52,6 @@
         top: 200px;
         left: 200px;
     }
-
 </style>
 
 <body>
@@ -59,7 +63,7 @@
         </div>
         <div id="right">
             <div id="score"></div>
-            <button type="button" id="playBtn"></button>
+            <button type="button" id="playBtn">Play</button>
         </div>
     </div>
     <script>
@@ -68,29 +72,36 @@
         const btn = document.getElementsByTagName('button');
         const scoreBox = document.getElementById('score');
         const playBtn = document.getElementById('playBtn');
+        const btn1 = document.getElementById('1');
 
         let score = 0;
         scoreBox.innerText = score;
 
-        main.append(makeBtn);
-        btn[0].id = "1"
-        btn[0].value = "ㅇㅇ"
+        playBtn.addEventListener('click', function () {
+            main.append(makeBtn);
+            btn[0].id = "1"
+            const btn1 = document.getElementById('1');
+            btn1.addEventListener('click', function (e) {
+                let x = Math.random() * 800;
+                let y = Math.random() * 800;
+                console.log(e.target.id)
+                if (e.target.id === "1") {
+                    score += 1
+                    scoreBox.innerText = score;
+                    main.appendChild(makeBtn)
+                    btn1.style.top = y + "px"
+                    btn1.style.left = x + "px"
 
-        btn[0].addEventListener('click',function(e){
-            console.log(e.target.id);
-            if(e.target.id === "1"){
-                const btn1 = document.getElementById('1');
+                }
+            })
+            setTimeout(function () {
                 main.removeChild(btn1);
-                score += 1
-                scoreBox.innerText = score;
-        }
+            }, 10000);
         })
 
-        playBtn.addEventListener('click',function(){
-            setTimeout(function(){
-                alert("ㅇㅇ")
-            },5000);
-        })
+
+
+
     </script>
 </body>
 
