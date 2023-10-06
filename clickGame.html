@@ -67,6 +67,7 @@
         const makeBtn = document.createElement('button');
         const btn = document.getElementsByTagName('button');
         const scoreBox = document.getElementById('score');
+        const playBtn = document.getElementById('playBtn');
 
         let score = 0;
         scoreBox.innerText = score;
@@ -85,7 +86,11 @@
         }
         })
 
-
+        playBtn.addEventListener('click',function(){
+            setTimeout(function(){
+                alert("ㅇㅇ")
+            },5000);
+        })
     </script>
 </body>
 
