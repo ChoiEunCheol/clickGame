@@ -15,10 +15,10 @@
     #main {
         width: 800px;
         height: 800px;
-        
+
         margin-top: 60px;
         margin-left: 60px;
-        
+
         border: 1px solid #000;
         background: #F9F9F9;
     }
@@ -98,18 +98,15 @@
         const main = document.getElementById('main');
         const makeBtn = document.createElement('button');
         const btn = document.getElementsByTagName('button');
+        const countBox = document.getElementById('count');
         const scoreBox = document.getElementById('score');
         const playBtn = document.getElementById('playBtn');
         const btn1 = document.getElementById('1');
 
         let score = 0;
-        scoreBox.innerText = "점수 "+ score;
-
         let timer = 10;
-        setInterval(function(){
-            timer -= 1;
-            console.log(timer);
-        },1000)
+        scoreBox.innerText = "점수 " + score;
+        countBox.innerText = "점수 " + timer;
 
         playBtn.addEventListener('click', function () {
             main.append(makeBtn);
@@ -131,6 +128,14 @@
             setTimeout(function () {
                 main.removeChild(btn1);
             }, 10000);
+            let timer = 10;
+            let countDown = setInterval(function () {
+                timer -= 1;
+                countBox.innerText = "제한 시간 " + timer;
+                if (timer === 0) {
+                    clearInterval(countDown);
+                }
+            }, 1000)
         })
 
 
