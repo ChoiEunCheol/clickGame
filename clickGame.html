@@ -26,7 +26,6 @@
     #right {
         width: 400px;
         height: 100vh;
-        background-color: yellow;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -98,31 +97,34 @@
         const main = document.getElementById('main');
         const makeBtn = document.createElement('button');
         const btn = document.getElementsByTagName('button');
+        const bestBox = document.getElementById('best');
         const countBox = document.getElementById('count');
         const scoreBox = document.getElementById('score');
         const playBtn = document.getElementById('playBtn');
         const btn1 = document.getElementById('1');
 
+        let best = 0;
         let score = 0;
         let timer = 10;
+        bestBox.innerText = "Best " + score;
         scoreBox.innerText = "점수 " + score;
-        countBox.innerText = "점수 " + timer;
+        countBox.innerText = "남은 시간 " + timer;
 
         playBtn.addEventListener('click', function () {
+            let score = 0;
+            scoreBox.innerText = "점수 " + score;
             main.append(makeBtn);
             btn[0].id = "1"
             const btn1 = document.getElementById('1');
             btn1.addEventListener('click', function (e) {
                 let x = Math.random() * 800 + 60;
                 let y = Math.random() * 800 + 60;
-                console.log(e.target.id)
                 if (e.target.id === "1") {
                     score += 1
                     scoreBox.innerText = "점수 " + score;
                     main.appendChild(makeBtn)
                     btn1.style.top = y + "px"
                     btn1.style.left = x + "px"
-
                 }
             })
             setTimeout(function () {
@@ -133,6 +135,10 @@
                 timer -= 1;
                 countBox.innerText = "제한 시간 " + timer;
                 if (timer === 0) {
+                    if (best < score) {
+                        best = score;
+                        bestBox.innerText = "Best " + score;
+                    }
                     clearInterval(countDown);
                 }
             }, 1000)
