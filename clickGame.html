@@ -23,11 +23,31 @@
         height: 100vh;
         background-color: yellow;
     }
-
-    #root > button {
-        width: 10px;
-        height: 10px;
+    
+    #score {
+        width: 300px;
+        height: 100px;
+        background-color: white;
     }
+
+    #playBtn{
+        width: 300px;
+        height: 300px;
+
+        border-radius: 50px;
+        background: #F66;
+    }
+
+    #main > button {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+
+        position: absolute;
+        top: 200px;
+        left: 200px;
+    }
+
 </style>
 
 <body>
@@ -38,14 +58,33 @@
             </div>
         </div>
         <div id="right">
-
+            <div id="score"></div>
+            <button type="button" id="playBtn"></button>
         </div>
     </div>
     <script>
         const main = document.getElementById('main');
         const makeBtn = document.createElement('button');
+        const btn = document.getElementsByTagName('button');
+        const scoreBox = document.getElementById('score');
+
+        let score = 0;
+        scoreBox.innerText = score;
 
         main.append(makeBtn);
+        btn[0].id = "1"
+        btn[0].value = "ㅇㅇ"
+
+        btn[0].addEventListener('click',function(e){
+            console.log(e.target.id);
+            if(e.target.id === "1"){
+                const btn1 = document.getElementById('1');
+                main.removeChild(btn1);
+                score += 1
+                scoreBox.innerText = score;
+        }
+        })
+
 
     </script>
 </body>
