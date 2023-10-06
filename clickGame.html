@@ -100,6 +100,8 @@
         const scoreBox = document.getElementById('score');
         const playBtn = document.getElementById('playBtn');
         const btn1 = document.getElementById('1');
+        let x = Math.random() * 770 + 75;
+        let y = Math.random() * 770 + 75;
 
         let best = 0;
         let score = 0;
@@ -112,6 +114,8 @@
             let score = 0;
             scoreBox.innerText = "점수 " + score;
             main.append(makeBtn);
+            btn[0].style.top = y + "px"
+            btn[0].style.left = x + "px"
             btn[0].id = "1"
             const btn1 = document.getElementById('1');
             btn1.addEventListener('click', function (e) {
