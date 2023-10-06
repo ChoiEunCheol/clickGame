@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,22 +8,46 @@
     <title>Document</title>
 </head>
 <style>
-    #main{
+    #root {
+        display: flex;
+    }
+
+    #left {
         width: 800px;
         height: 800px;
         background-color: violet;
     }
+
+    #right {
+        width: 400px;
+        height: 100vh;
+        background-color: yellow;
+    }
+
+    #root > button {
+        width: 10px;
+        height: 10px;
+    }
 </style>
+
 <body>
     <div id="root">
-        <div id="main">
+        <div id="left">
+            <div id="main">
+
+            </div>
+        </div>
+        <div id="right">
 
         </div>
     </div>
-<script>
-    const main = document.getElementById('main');
+    <script>
+        const main = document.getElementById('main');
+        const makeBtn = document.createElement('button');
 
-    
-</script>
+        main.append(makeBtn);
+
+    </script>
 </body>
+
 </html>
